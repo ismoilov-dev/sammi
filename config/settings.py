@@ -204,13 +204,16 @@ SIMPLE_JWT = {
 # ══════════════════════════════════════════
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:5173"
+    default="https://asilbekjon.uz"
 ).split(",")
+
 CORS_ALLOW_CREDENTIALS = True
+
 CSRF_TRUSTED_ORIGINS = config(
-    "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:5173"
+    "CSRF_TRUSTED_ORIGINS",
+    default="https://asilbekjon.uz"
 ).split(",")
+
 CORS_ALLOW_HEADERS = [
     "accept",
     "authorization",
@@ -218,7 +221,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-
 # =========================================
 # ALLAUTH
 # =========================================
