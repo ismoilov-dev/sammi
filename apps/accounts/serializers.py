@@ -65,11 +65,20 @@ class GoogleAuthSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    avatar_url = serializers.SerializerMethodField()
+
+    def get_avatar_url(self, obj):
+        if obj.avatar_url:
+            try:
+                return obj.avatar_url.url
+            except Exception:
+                return None
+        return None
+
     class Meta:
         model        = User
         fields       = ["id", "email", "full_name", "avatar_url", "country", "language_code", "created_at", "is_new_user"]
         read_only_fields = ["id", "email", "created_at", "is_new_user"]
-
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     """PATCH /auth/me/ uchun"""
