@@ -116,7 +116,7 @@ class VerifyEmailOTPView(GenericAPIView):
                     "message": "OTP tasdiqlandi",
                     "email": user.email,
                     "full_name": user.get_full_name(),
-                    "avatar_url": user.avatar_url,
+                    "avatar_url": user.avatar_url.url if user.avatar_url else None,
                     "refresh": tokens['refresh'],
                     "access": tokens['access'],
                 },
