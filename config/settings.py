@@ -201,17 +201,16 @@ SIMPLE_JWT = {
 
 # ══════════════════════════════════════════
 #  CORS  ← TO'G'RILANDI
-# ══════════════════════════════════════════
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
-    default="https://asilbekjon.uz"
+    default="https://asilbekjon.uz,http://localhost:5173,http://localhost:3000"
 ).split(",")
 
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
-    default="https://asilbekjon.uz"
+    default="https://asilbekjon.uz,http://localhost:5173,http://localhost:3000"
 ).split(",")
 
 CORS_ALLOW_HEADERS = [
