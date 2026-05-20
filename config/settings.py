@@ -157,8 +157,15 @@ AWS_QUERYSTRING_AUTH    = False
 # ✅ MINIO_ENDPOINT .env da faqat IP:PORT bo'lishi kerak
 # Masalan: MINIO_ENDPOINT=16.170.235.75:9000  (127.0.0.1 EMAS!)
 _minio_endpoint = os.getenv('MINIO_ENDPOINT', '')
-AWS_S3_ENDPOINT_URL = f'http://{_minio_endpoint}' if _minio_endpoint else ''
+_minio_https = os.getenv('MINIO_USE_HTTPS', 'False') == 'True'
 
+protocol = 'https' if _minio_https else 'http'
+
+AWS_S3_ENDPOINT_URL = (
+    f'{protocol}://{_minio_endpoint}'
+    if _minio_endpoint
+    else ''
+)
 # ══════════════════════════════════════════
 #  DRF
 # ══════════════════════════════════════════
